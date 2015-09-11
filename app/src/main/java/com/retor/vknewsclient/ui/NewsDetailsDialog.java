@@ -30,7 +30,7 @@ import com.retor.vknewsclient.db.model.NewsWithAttachments;
 import com.retor.vknewsclient.di.modules.DaggerPresentersComponent;
 import com.retor.vknewsclient.di.modules.InteractorsModule;
 import com.retor.vknewsclient.di.modules.PresenterModules;
-import com.retor.vknewsclient.pictures.PicLoader;
+import com.retor.vknewsclient.utils.PicLoader;
 import com.retor.vknewsclient.presenter.ListPresenter;
 import com.retor.vknewsclient.view.ListView;
 

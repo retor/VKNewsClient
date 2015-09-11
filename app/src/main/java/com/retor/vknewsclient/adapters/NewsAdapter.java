@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.retor.vknewsclient.R;
 import com.retor.vknewsclient.db.model.NewsWithAttachments;
-import com.retor.vknewsclient.pictures.PicLoader;
+import com.retor.vknewsclient.utils.PicLoader;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

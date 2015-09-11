@@ -8,7 +8,7 @@ import com.retor.vknewsclient.application.BaseApplication;
 import com.retor.vknewsclient.db.di.DBModule;
 import com.retor.vknewsclient.db.interactor.InteractorDBComments;
 import com.retor.vknewsclient.db.interactor.InteractorDBNews;
-import com.retor.vknewsclient.pictures.PicLoader;
+import com.retor.vknewsclient.utils.PicLoader;
 import com.retor.vknewsclient.utils.CheckUtils;
 
 import javax.inject.Singleton;

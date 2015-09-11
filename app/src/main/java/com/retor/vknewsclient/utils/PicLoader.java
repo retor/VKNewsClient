@@ -1,4 +1,4 @@
-package com.retor.vknewsclient.pictures;
+package com.retor.vknewsclient.utils;
 
 import android.content.Context;
 import android.net.Uri;
@@ -34,8 +34,9 @@ public class PicLoader {
     }
 
     public void loadPic(String url, ImageView into){
-        queryMap.put(url,into);
-        work();
+        picasso.load(Uri.parse(url)).into(into);
+/*        queryMap.put(url,into);
+        work();*/
     }
 
     private void work(){
@@ -52,7 +53,7 @@ public class PicLoader {
 
             @Override
             public void onNext(final Map.Entry<String, ImageView> stringImageViewEntry) {
-                picasso.load(Uri.parse(stringImageViewEntry.getKey())).into(stringImageViewEntry.getValue());
+
             }
         }).observeOn(AndroidSchedulers.mainThread()).subscribe();
     }
