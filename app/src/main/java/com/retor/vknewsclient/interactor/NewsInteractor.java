@@ -44,63 +44,25 @@ public class NewsInteractor implements InteractorNews {
     public Subscription getNews(final Subscriber<List<NewsWithAttachments>> subscriber) {
         return TRANSFORMER_NEWS.call(SDK.getNewsApi().getNews(null))
                 .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.from(Executors.newCachedThreadPool()))
-                .subscribe(subscriber);/*new Action1<List<NewsWithAttachments>>() {
-                    @Override
-                    public void call(final List<NewsWithAttachments> newsWithAttachment) {
-                        if (newsWithAttachment.isEmpty())
-                            subscriber.onCompleted();
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(final Throwable throwable) {
-                        throwable.printStackTrace();
-                        Log.d("Opss...", throwable.getLocalizedMessage());
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-
-                    }
-                });*/
+                .subscribe(subscriber);
     }
-
-
 
     @Override
     public Subscription getNewsNext(final Subscriber<List<NewsWithAttachments>> subscriber) {
         if (this.next_from != null)
             return TRANSFORMER_NEWS.call(SDK.getNewsApi().getNews(next_from))
                     .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.from(Executors.newCachedThreadPool()))
-                    .subscribe(subscriber);/*new Action1<List<NewsWithAttachments>>() {
-                        @Override
-                        public void call(final List<NewsWithAttachments> newsWithAttachmentses) {
-                            if (newsWithAttachmentses.isEmpty())
-                                subscriber.onCompleted();
-                        }
-                    }, new Action1<Throwable>() {
-                        @Override
-                        public void call(final Throwable throwable) {
-                            throwable.printStackTrace();
-                            throwable.toString();
-                        }
-                    }, new Action0() {
-                        @Override
-                        public void call() {
-
-                        }
-                    });*/
+                    .subscribe(subscriber);
         else
             return getNews(subscriber);
     }
-
-
 
     @NonNull
     private Observable<List<AttachmentNews>> getNewsAttachments(final NewsPost post) {
         if (post.getAttachments() == null || post.getAttachments().isEmpty()) {
             List<AttachmentNews> null_list = new ArrayList<AttachmentNews>(0);
             return Observable.from(null_list).toList();
-        }else
+        } else
             return Observable.from(post.getAttachments()).map(new Func1<AttachModel, AttachmentNews>() {
                 @Override
                 public AttachmentNews call(final AttachModel attachModel) {
@@ -120,7 +82,7 @@ public class NewsInteractor implements InteractorNews {
                 post.getDate(),
                 post.getLikes().getCount(),
                 post.getComments().getCount()
-                ));
+        ));
     }
 
     private Observable<List<NewsWithAttachments>> getPostList(final Observable<NewsResponse> newsResponseObservable) {

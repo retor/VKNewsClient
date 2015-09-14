@@ -88,12 +88,14 @@ public class CommentsPresenter extends ListPresenter<List<CommentWithAttachments
             if (!isInAction()) {
                 setInAction(true);
                 getView().showProgress();
-                subscription = interactorComments.getCommentsNext(String.valueOf(news.getNews().getUser_id()), String.valueOf(news.getNews().getPost_id()), null, subscriber);
+                subscription = interactorComments.getCommentsNext(String.valueOf(news.getNews().getUser_id()),
+                        String.valueOf(news.getNews().getPost_id()),
+                        String.valueOf(posts.get(posts.size()-1).getComment().get_id()),
+                        subscriber);
             }
         } else {
             subscriber.onError(new Exception("No internet connection"));
         }
-
     }
 
     @Override

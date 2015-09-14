@@ -131,7 +131,7 @@ public class NewsPresenter extends ListPresenter<List<NewsWithAttachments>> {
                 getView().showProgress();
                 subscription = interactorNews.getNewsNext(subscriber);
             }
-        }else {
+        } else {
             subscriber.onError(new Exception("No internet connection"));
         }
     }
@@ -159,6 +159,7 @@ public class NewsPresenter extends ListPresenter<List<NewsWithAttachments>> {
                 saveToDB(newsWithAttachmentses, null);
             }
         };
+        loadFromDB(subscriber);
         if (checkUtils.isNetworkConnected()) {
             if (!isInAction()) {
                 setInAction(true);
@@ -167,11 +168,10 @@ public class NewsPresenter extends ListPresenter<List<NewsWithAttachments>> {
                 posts.clear();
                 subscription = interactorNews.getNews(subscriber);
             }
-        }else{
+        } else {
             setInAction(true);
             getView().onError(new Exception("No connection.DB loading..."));
             getView().showProgress();
-            loadFromDB(subscriber);
         }
     }
 

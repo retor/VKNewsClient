@@ -49,14 +49,9 @@ public class CommentsAdapter extends BaseAdapter<CommentsAdapter.CommentsHolder,
         loader.loadPic(post.getComment().getAuthor_pic(), holder.photo);
         holder.author.setText(post.getComment().getAuthor());
         holder.content.removeAllViews();
-//        TextView textView = new TextView(holder.itemView.getContext());
-//        textView.setText(post.getNews().getText());
-//        holder.content.addView(textView,0);
         if (post.getAttachmentList()!=null && !post.getAttachmentList().isEmpty()){
             ImageView photo = new ImageView(holder.itemView.getContext());
             loader.loadPic(post.getAttachmentList().get(0).getUrl(), photo);
-//            textView.setText((post.getAttachmentList().get(0).getUrl()));
-//            holder.content.addView(textView, holder.content.getLayoutParams());
             holder.content.addView(photo,holder.content.getLayoutParams());
         }
         holder.content.setScrollContainer(true);

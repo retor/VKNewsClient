@@ -37,7 +37,6 @@ public class AuthPresenter extends LoginPresenter {
 
     @Inject
     public AuthPresenter(BaseApplication application) {
-        //TODO Inject here
         DaggerPresentersComponent.builder()
                 .applicationComponent(application.getComponent())
                 .interactorsModule(new InteractorsModule())
@@ -49,10 +48,7 @@ public class AuthPresenter extends LoginPresenter {
     @Override
     public void onCreate(final FragmentActivity activity, final Bundle savedState) {
         setActivity(activity);
-//        if(!SDK.isKey(activity.getApplication()))
-            login();
-/*        else
-            doOnLogin();*/
+        login();
     }
 
     @Override
@@ -77,7 +73,7 @@ public class AuthPresenter extends LoginPresenter {
 
     @Override
     public void logout() {
-        if (!isInAction())// && isAuthorized())
+        if (!isInAction())
             authorizator.logout(getActivity());
         doOnLogout();
     }
@@ -128,15 +124,9 @@ public class AuthPresenter extends LoginPresenter {
     }
 
     private void doOnLogin() {
-        //TODO Create new ListFragment with presenter and add to ontainer
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
-        if (supportFragmentManager.getFragments() != null && supportFragmentManager.findFragmentByTag(FRAGMENT_TAG) != null)
-            FRAGMENT_TAG.toString();
-//            supportFragmentManager.beginTransaction().show(supportFragmentManager.findFragmentByTag(FRAGMENT_TAG)).commit();
-//            supportFragmentManager.beginTransaction().replace(R.id.container, supportFragmentManager.findFragmentByTag(FRAGMENT_TAG), FRAGMENT_TAG).commit();
-        else
+        if (supportFragmentManager.findFragmentByTag(FRAGMENT_TAG) == null)
             supportFragmentManager.beginTransaction().add(R.id.container, new NewsFragment(), FRAGMENT_TAG).commit();
-
     }
 
     private void doOnLogout() {
