@@ -25,6 +25,13 @@ public class NewsResponse implements Parcelable {
     public NewsResponse() {
     }
 
+    public NewsResponse(final List<NewsPost> items, final String next_from, final List<Profile> profiles, final List<Group> groups) {
+        this.items = items;
+        this.next_from = next_from;
+        this.profiles = profiles;
+        this.groups = groups;
+    }
+
     public List<NewsPost> getItems ()
     {
         return items;

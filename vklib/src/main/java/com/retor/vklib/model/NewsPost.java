@@ -3,6 +3,8 @@ package com.retor.vklib.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.retor.vklib.model.attachments.AttachModel;
 import com.retor.vklib.model.beans.Comments;
 import com.retor.vklib.model.beans.Likes;
@@ -13,27 +15,46 @@ import com.retor.vklib.model.beans.Reposts;
  * Created by retor on 24.08.2015.
  */
 public class NewsPost implements Parcelable {
-    public Post_source post_source;
+    @SerializedName("post_source")
+    @Expose
+    private Post_source post_source;
+    @Expose
+    private String text;
+    @Expose
+    private Reposts reposts;
+    @SerializedName("source_id")
+    @Expose
+    private int source_id;
+    @Expose
+    private Likes likes;
+    @SerializedName("post_type")
+    @Expose
+    private String post_type;
+    @Expose
+    private Attachments<AttachModel> attachments;
+    @SerializedName("post_id")
+    @Expose
+    private int post_id;
+    @Expose
+    private long date;
+    @Expose
+    private String type;
+    @Expose
+    private Comments comments;
 
-    public String text;
-
-    public Reposts reposts;
-
-    public int source_id;
-
-    public Likes likes;
-
-    public String post_type;
-
-    public Attachments<AttachModel> attachments;
-
-    public int post_id;
-
-    public long date;
-
-    public String type;
-
-    public Comments comments;
+    public NewsPost(final Post_source post_source, final String text, final Reposts reposts, final int source_id, final Likes likes, final String post_type, final Attachments<AttachModel> attachments, final int post_id, final long date, final String type, final Comments comments) {
+        this.post_source = post_source;
+        this.text = text;
+        this.reposts = reposts;
+        this.source_id = source_id;
+        this.likes = likes;
+        this.post_type = post_type;
+        this.attachments = attachments;
+        this.post_id = post_id;
+        this.date = date;
+        this.type = type;
+        this.comments = comments;
+    }
 
     public Post_source getPost_source() {
         return post_source;
